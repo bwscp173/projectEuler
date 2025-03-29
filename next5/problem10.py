@@ -1,7 +1,10 @@
-"""Largest Prime Factor:
-what is the largest prime factor of the number 600851475143"""
+"""The sum of the primes below 
+10 is 2+3+5+7=17.
+
+Find the sum of all the primes below two million."""
+
 import math
-def Eratosthenes(size=600851475143):
+def Eratosthenes(size=2_000_000):
     """my attempt at a Sieve of Eratosthenes without fully knowing what it is
     (i saw a short clip kinda explaing it)
     and you can be sure its my own code because it runs out of memory
@@ -9,17 +12,14 @@ def Eratosthenes(size=600851475143):
     """
     allnumbers = []
     for i in range(size):
-        if i % 10000000 == 0:
-            print(f"still working ({i}/{size})")
         allnumbers.append(i)
-    print("done with settingS")
-    for i in range(2,math.ceil(math.sqrt(size))):
 
+
+    for i in range(2,math.ceil(math.sqrt(size))):
         for j in range(2,size):
             if i*j >= size:
                 break
-
             allnumbers[i*j] = 0
 
-    print(max(allnumbers))
-Eratosthenes()
+    return sum(allnumbers) - 1
+print("the answer is: ",Eratosthenes())
