@@ -19,13 +19,14 @@ for i in range(1,28124):
         abundant_numbers[i] = None
     else:
         non_abundant_numbers.append(i)
-total = 0
+
 print(non_abundant_numbers[0])
-# for i in non_abundant_numbers:
-#     if i in abundant_numbers:
-#         continue
-#     for j in non_abundant_numbers:
-#         if j in abundant_numbers:
-#             continue
-#         total += i + j
-print(total)
+
+sum_of_abundant_numbers = {}
+print(abundant_numbers)
+for key in abundant_numbers.keys():
+    print("key:",key)
+    permutations = itertools.permutations(key)
+    for perm in permutations:
+        print(perm)
+print("hello")
