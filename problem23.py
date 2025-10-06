@@ -1,32 +1,29 @@
-import itertools
 def number_type(number):
     total = 0
-    for i in range(1,int(number**0.5)+1):
+    for i in range(1,int(number/2)+1):
         if number % i == 0:
-            total +=i
-    if total == number:
-        return "perfect"
-    elif total > number:
+            total += i
+    if total > number:
         return "abundant"
-    else:
-        return "deficient"
-    
+    return None
 
-abundant_numbers = {}
-non_abundant_numbers = []
-for i in range(1,28124):
-    if number_type(i) == "abundant":
-        abundant_numbers[i] = None
-    else:
-        non_abundant_numbers.append(i)
 
-print(non_abundant_numbers[0])
+abundant_numbers = [i for i in range(28123) if number_type(i) == "abundant"]
+print("now adding")
 
-sum_of_abundant_numbers = {}
-print(abundant_numbers)
-for key in abundant_numbers.keys():
-    print("key:",key)
-    permutations = itertools.permutations(key)
-    for perm in permutations:
-        print(perm)
-print("hello")
+all_abundant_added = {}
+for i in abundant_numbers:
+    for j in abundant_numbers:
+        result = i + j
+        if result >= 28123:
+            break
+        all_abundant_added[result]=None
+
+print("now checking")
+
+total = 0
+for i in range(28123):
+    if i not in all_abundant_added:
+        total += i
+
+print("answer:",total)
